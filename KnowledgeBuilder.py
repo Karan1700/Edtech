@@ -40,11 +40,19 @@ import os
 from langchain_community.llms import HuggingFaceEndpoint
 
 load_dotenv(dotenv_path="D:/SmartLearnHub/.env")
+print("DEBUG: HUGGINGFACEHUB_API_TOKEN =", "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")
+
+if "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" is None:
+    raise ValueError("HUGGINGFACEHUB_API_TOKEN not found in environment or .env file")
+huggingface_token = "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"
+if huggingface_token is None:
+    raise ValueError("HUGGINGFACEHUB_API_TOKEN not found in environment or .env file")
 
 repo_id="mistralai/Mistral-7B-Instruct-v0.2"
-llm=HuggingFaceEndpoint(repo_id=repo_id,temperature=0.7,token="")
+llm=HuggingFaceEndpoint(repo_id=repo_id,temperature=0.7,token="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")
 api_key='AIzaSyDyQforeXPm_u6JdUD_91B9B53uEY_oIKI'
 genai.configure(api_key=api_key)
+
 
 t= ["Python", "Java", "C++", "JavaScript", "Ruby", "PHP", "Swift", "Kotlin", 
     "C#", "Go", "R", "TypeScript", "Scala", "Perl", "Objective-C", "Dart", 
